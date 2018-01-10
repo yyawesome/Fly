@@ -21,7 +21,7 @@ def get_daily_limit_along_factor(df):
     date_num_series = date_series.value_counts()
     date_num_df = DataFrame({DAY_COL_KEY_DATE: date_num_series.index,
                              DAY_COL_KEY_HLA_NUM: date_num_series.values})
-    print(date_num_df)
+    # print(date_num_df)
     # 默认根据date作为两个表的key值进行连接合并
     return pd.merge(df, date_num_df)
 
