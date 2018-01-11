@@ -8,7 +8,7 @@ from pandas import Series, DataFrame
 # 统计非一字板的个数 一字板判定（涨停并且开盘涨幅大于8%）
 # 根据一字板涨停条件抽取出一个df[date] 生成series 然后进行count，在将series根据date count 添加到原df
 def get_daily_limit_along_factor(df):
-    limit_df = df[np.logical_and((100 - (df['open'] / df['close']) * (1 + df['p_change']/100)) >= 8,
+    limit_df = df[np.logical_and((100 - (df['open'] / df['close']) * (100 + df['p_change'])) >= 8,
                                  df['p_change'] > 9.8)]
     rest_df = df.drop(limit_df)['date']
     date_series = Series(rest_df)
